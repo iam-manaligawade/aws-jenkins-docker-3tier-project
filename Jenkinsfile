@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "iammanali/flask-shopping-app"
         VERSION = "${BUILD_NUMBER}"
-        APP_SERVER = "ubuntu@16.176.6.206"
+        APP_SERVER = "ubuntu@3.25.57.61"
     }
 
     stages {
