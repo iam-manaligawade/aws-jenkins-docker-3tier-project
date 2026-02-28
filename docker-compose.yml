@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: shopping
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: ./shopping-application
+    container_name: backend
+    restart: always
+    environment:
+      DB_SERVER: mysql
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_DATABASE: shopping
+      APP_PORT: 5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
