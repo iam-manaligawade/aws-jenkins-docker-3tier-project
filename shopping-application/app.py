@@ -37,11 +37,11 @@ def index():
 
 app_hostname = os.getenv('HOSTNAME',None)
 app_version = "version1"
-app_port = os.getenv('APP_PORT','5000')
+app_port = int(os.getenv('APP_PORT', 5000))
     
-db_server   = os.getenv('DB_SERVER',None)
-db_user     = os.getenv('DB_USER',None)
-db_password = os.getenv('DB_PASSWORD',None)
-db_database = os.getenv('DB_DATABASE',None)
+db_server   = os.getenv('DB_SERVER', 'localhost')
+db_user     = os.getenv('DB_USER', 'root')
+db_password = os.getenv('DB_PASSWORD', '')
+db_database = os.getenv('DB_DATABASE', 'shopping')
     
 app.run(debug=True,host="0.0.0.0",port=app_port)
