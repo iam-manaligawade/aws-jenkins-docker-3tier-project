@@ -9,12 +9,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repo') {
-            steps {
-                git 'https://github.com/iam-manaligawade/aws-jenkins-docker-3tier-project.git'
-            }
-        }
-
         stage('Build Image') {
             steps {
                 sh 'docker build -t $DOCKER_IMAGE:$VERSION ./shopping-application'
