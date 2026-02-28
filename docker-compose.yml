@@ -11,7 +11,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   backend:
-    build: ./shopping-application
+    image: iammanali/flask-shopping-app:latest
     container_name: backend
     restart: unless-stopped
     environment:
